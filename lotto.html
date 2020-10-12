@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<html>
+<title>Quick Pick</title>
+
+
+
+<body>
+
+    <script>
+
+        var quickpick = [];
+
+        for(i = 0; i <5 ; i++){
+            quickpick.push(randomBetween(48));
+        }
+
+        var lucky = randomBetween(18);
+
+        quickpick.sort(function(a, b){return a-b});
+
+        document.write("The Quick Pick numbers are:")
+
+        for(i = 0; i <5 ; i++){
+            document.write(" " + quickpick[i]);
+        }
+
+        document.write("<br>");
+        document.write("The Lucky Ball number is: " + lucky);
+
+        document.write("<br>");
+
+
+
+        var numbers = prompt("Enter winning numbers separated by a space", "28 30 31 42 43");
+        var lucky_real = prompt("Enter a lucky number", "13");
+        var num_arr = numbers.split(" ");
+
+
+        document.write("<br>");
+
+        num_arr.sort(function(a, b){return a-b});
+
+
+        document.write("The winning numbers are:")
+
+
+
+        var correct = [];
+
+        for(i = 0; i <5 ; i++){
+            document.write(" " + num_arr[i]);
+            for(j = 0; j < 5; j++){
+                if(numbers[i] == quickpick[j]){
+                    correct.push(numbers[i]);
+                    break;
+                }
+
+            }
+        }
+
+        document.write("<br>");
+        document.write("The Lucky Ball number is: " + lucky_real);
+
+        document.write("<br>");
+        document.write("<br>");
+
+        document.write("You have " + correct.length + " matching numbers!");
+
+        document.write("<br>");
+
+        if(lucky == lucky_real){
+            var lucky_yes = true;
+            document.write("Congratulations! Your Lucky Ball Matched!");
+        }else{
+            lucky_yes = false;
+            document.write("Your Lucky Ball did not match.");
+        }
+
+        document.write("<br>");
+
+        payout(correct.length, lucky_yes);
+
+
+        function randomBetween(x){
+            return Math.floor(Math.random() * x) + 1;
+        }
+
+        function payout(num_corr, lucky_bool){
+            if(lucky_bool){
+                if(num_corr == 0){
+                    document.write("You win! Your payout is $4");
+                }else if(num_corr == 1){
+                    document.write("You win! Your payout is $6");
+                }else if(num_corr == 2){
+                    document.write("You win! Your payout is $25");
+                }else if(num_corr == 3){
+                    document.write("You win! Your payout is $150");
+                }else if(num_corr == 4){
+                    document.write("You win! Your payout is $5,000");
+                }else if(num_corr == 5){
+                    document.write("You win! Your payout is $7,000 a week FOR LIFE!");
+                }
+            }else{
+                if(num_corr == 0){
+                    document.write("You didn't win");
+                }else if(num_corr == 1){
+                    document.write("You didn't win");
+                }else if(num_corr == 2){
+                    document.write("You win! Your payout is $3");
+                }else if(num_corr == 3){
+                    document.write("You win! Your payout is $20");
+                }else if(num_corr == 4){
+                    document.write("You win! Your payout is $200");
+                }else if(num_corr == 5){
+                    document.write("You win! Your payout is $25,000 a year FOR LIFE!");
+                }
+            }
+        }
+
+    </script>
+
+
+</body>
+
+
+
+</html>
