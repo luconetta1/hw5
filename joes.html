@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+<title>Joe's Hot Dogs </title>
+
+<body>
+    <h1>Welcome to Joe's Hot Dogs</h1>
+
+    <h2>Your Order</h2>
+
+
+        <p id="demo"></p>
+        <p id = "fries"></p>
+        <p id = "soda"></p>
+        <p id="discount"></p>
+        <p id = "subtotal"></p>
+        <p id = "tax"></p>
+        <p id = "total"></p>
+
+        <script>
+            var hotdogs =  prompt("How many Hot Dogs?", 1);
+            var fries = prompt("How many Fries?", 1);
+            var soda = prompt("How many Sodas?", 1);
+
+            var subtotal = (3.25*hotdogs) + (2*fries) + (1.5 * soda);
+            var new_subtotal = subtotal;
+            if(subtotal >= 20){
+                new_subtotal = subtotal*.9;
+                document.getElementById("discount").innerHTML = "You qualified for our 10% discount!";
+            }
+
+           var total = new_subtotal*1.0625;
+
+            document.getElementById("demo").innerHTML =  "# Hotdogs: " + hotdogs + " at $3.25 is $" + (3.25*hotdogs).toFixed(2);
+            document.getElementById("fries").innerHTML = "# Fries: " + fries + " at $2.00 is $" + (2.00*fries).toFixed(2);
+            document.getElementById("soda").innerHTML = "# Sodas: " + soda + " at $1.50 is $" + (1.50*soda).toFixed(2);
+            document.getElementById("subtotal").innerHTML = "Subtotal: $" + (new_subtotal).toFixed(2);
+            document.getElementById("tax").innerHTML = "Meals Tax: $" + (.0625*new_subtotal).toFixed(2);
+            document.getElementById("total").innerHTML = "Total: $" + (total).toFixed(2);
+
+        </script>
+
+
+</body>
+</html>
